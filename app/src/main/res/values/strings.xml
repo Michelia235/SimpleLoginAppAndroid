@@ -3,4 +3,16 @@
     <string name="btnLogin">Login</string>
     <string name="txtUsername">Username</string>
     <string name="txtPassword">Password</string>
+
+    <string name="btnRegister">Register</string>
+    <string name="btnCreateAccount">Create Account</string>
+    <string name="btnBackToLogin">Login Account</string>
+    <string name="lblAttempts">Attempts: %1$d / %2$d</string>
+    <string name="msg_enter_both">You must enter Username and Password.</string>
+    <string name="msg_incorrect">Username or Password is incorrect.</string>
+    <string name="msg_locked">Your account is locked for 1 day.</string>
+    <string name="btnTryAnother">Try another account</string>
+    <string name="msg_locked_remaining">This account is locked. Try again in %1$s.</string>
+    <string name="btnLogout">Logout</string>
+    <string name="msg_logged_out">Logged out</string>
 </resources>
