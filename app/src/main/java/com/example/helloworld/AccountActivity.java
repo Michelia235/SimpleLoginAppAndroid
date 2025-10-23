@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,13 +15,10 @@ public class AccountActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_account);
 
-        // Lấy username từ Intent extra
-        String username = getIntent().getStringExtra(MainActivity.EXTRA_USERNAME);
-        if (username == null || username.isEmpty()) {
-            username = "User";
-        }
 
-        TextView tvGreeting = findViewById(R.id.tvGreeting);
-        tvGreeting.setText("Hello " + username + "!");
-    }
+        TextView tv = new TextView(this);
+        tv.setText("Hello Android!");
+        tv.setGravity(Gravity.CENTER);
+        setContentView(tv);
+        };
 }
