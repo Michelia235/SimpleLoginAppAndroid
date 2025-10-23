@@ -15,4 +15,7 @@
     <string name="msg_locked_remaining">This account is locked. Try again in %1$s.</string>
     <string name="btnLogout">Logout</string>
     <string name="msg_logged_out">Logged out</string>
+    <string name="msg_password_mismatch">Passwords do not match.</string>
+    <string name="msg_username_exists">Username already exists.</string>
+    <string name="msg_account_created">Account created. You can now login.</string>
 </resources>

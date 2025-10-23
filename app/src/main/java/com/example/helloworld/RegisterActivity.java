@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -16,7 +15,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
         EditText edtU = findViewById(R.id.editRegUsername);
@@ -35,17 +33,17 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             if (!p.equals(c)) {
-                Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_password_mismatch), Toast.LENGTH_SHORT).show();
                 return;
             }
             SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
             if (prefs.getString("pw_" + u, null) != null) {
-                Toast.makeText(this, "Username already exists.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_username_exists), Toast.LENGTH_SHORT).show();
                 return;
             }
             prefs.edit().putString("pw_" + u, p).apply();
-            Toast.makeText(this, "Account created. You can now login.", Toast.LENGTH_SHORT).show();
-            finish(); // quay về màn login
+            Toast.makeText(this, getString(R.string.msg_account_created), Toast.LENGTH_SHORT).show();
+            finish();
         });
 
         btnLogin.setOnClickListener(v -> finish());

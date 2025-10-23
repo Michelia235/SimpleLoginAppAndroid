@@ -8,20 +8,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LockActivity extends AppCompatActivity {
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
 
         String user = getIntent().getStringExtra(MainActivity.EXTRA_LOCKED_USERNAME);
         long until = getIntent().getLongExtra(MainActivity.EXTRA_LOCK_UNTIL, 0L);
         long remain = Math.max(0, until - System.currentTimeMillis());
+        if (user == null || user.isEmpty()) user = "this account";
 
         TextView tv = findViewById(R.id.tvLockMsg);
-        if (user == null || user.isEmpty()) user = "this account";
         tv.setText("Your account (" + user + ") is locked. Try again in " + humanize(remain) + ".");
 
         Button btn = findViewById(R.id.btnTryAnother);
-        btn.setOnClickListener(v -> finish()); // quay lại màn login
+        btn.setOnClickListener(v -> finish());
     }
 
     private String humanize(long ms) {
