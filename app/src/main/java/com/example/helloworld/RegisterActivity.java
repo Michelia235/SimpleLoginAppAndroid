@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private static final String PREFS = "auth_prefs";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.msg_password_mismatch), Toast.LENGTH_SHORT).show();
                 return;
             }
-            SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+            SharedPreferences prefs = AuthPrefs.get(this);
             if (prefs.getString("pw_" + u, null) != null) {
                 Toast.makeText(this, getString(R.string.msg_username_exists), Toast.LENGTH_SHORT).show();
                 return;

@@ -24,7 +24,7 @@ public class AccountActivity extends AppCompatActivity {
 
         Button btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> {
-            SharedPreferences prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE);
+            SharedPreferences prefs = AuthPrefs.get(this);
             prefs.edit().remove("current_user").apply();
             Toast.makeText(this, getString(R.string.msg_logged_out), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(AccountActivity.this, MainActivity.class);

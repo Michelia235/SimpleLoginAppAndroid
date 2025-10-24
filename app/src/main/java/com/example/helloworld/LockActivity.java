@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -8,21 +9,38 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LockActivity extends AppCompatActivity {
 
+    private CountDownTimer timer;
+    private String lockedUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
 
-        String user = getIntent().getStringExtra(MainActivity.EXTRA_LOCKED_USERNAME);
+        String u = getIntent().getStringExtra(MainActivity.EXTRA_LOCKED_USERNAME);
+        lockedUser = (u == null || u.isEmpty()) ? getString(R.string.this_account) : u;
+
         long until = getIntent().getLongExtra(MainActivity.EXTRA_LOCK_UNTIL, 0L);
         long remain = Math.max(0, until - System.currentTimeMillis());
-        if (user == null || user.isEmpty()) user = "this account";
 
         TextView tv = findViewById(R.id.tvLockMsg);
-        tv.setText("Your account (" + user + ") is locked. Try again in " + humanize(remain) + ".");
-
         Button btn = findViewById(R.id.btnTryAnother);
         btn.setOnClickListener(v -> finish());
+
+        tv.setText(getString(R.string.lock_msg_with_remaining, lockedUser, humanize(remain)));
+        timer = new CountDownTimer(remain, 1000) {
+            @Override public void onTick(long ms) {
+                tv.setText(getString(R.string.lock_msg_with_remaining, lockedUser, humanize(ms)));
+            }
+            @Override public void onFinish() { finish(); }
+        };
+        timer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (timer != null) timer.cancel();
+        super.onDestroy();
     }
 
     private String humanize(long ms) {

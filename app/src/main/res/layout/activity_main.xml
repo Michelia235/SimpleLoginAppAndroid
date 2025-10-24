@@ -44,10 +44,10 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/txtUsername"
-                app:counterEnabled="false">
+                android:hint="@string/txtUsername">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editUsername"
                     android:layout_width="match_parent"
@@ -58,6 +58,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/txtPassword"
@@ -94,6 +95,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btnRegister"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/btnForgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password"
+                android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
